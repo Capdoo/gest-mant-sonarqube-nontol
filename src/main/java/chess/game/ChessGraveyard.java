@@ -1,3 +1,4 @@
+package chess.game;
 import java.awt.GridLayout;
 import javax.swing.*;
 // -------------------------------------------------------------------------

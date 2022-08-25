@@ -1,3 +1,4 @@
+package chess.game;
 import java.awt.Component;
 import java.awt.event.*;
 import javax.swing.*;
@@ -94,13 +95,18 @@ public class ChessMenuBar
     private void exitHandler(){
         JOptionPane.showMessageDialog( this.getParent(), "Thanks for leaving"
             + ", quitter! >:(" );
+        
         Component possibleFrame = this;
-        while ( possibleFrame != null && !( possibleFrame instanceof JFrame ) ){
+        
+
+    	while ( !( possibleFrame instanceof JFrame ) ){
             possibleFrame = possibleFrame.getParent();
         }
         JFrame frame = (JFrame)possibleFrame;
         frame.setVisible( false );
-        frame.dispose();
+        frame.dispose();	
+
+        
     }
     /**
      * Takes an appropriate action if the toggle graveyard button is clicked.
