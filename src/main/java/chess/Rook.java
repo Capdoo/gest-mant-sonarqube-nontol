@@ -1,4 +1,4 @@
-package chess.game;
+package chess;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,18 +58,14 @@ public class Rook extends ChessGamePiece{
 	public ImageIcon createImageByPieceType() {
 		icons_map = new HashMap<Integer, String>();
 
-		icons_map.put(-1, "chessImages/default-Unassigned.gif");
-		icons_map.put(ChessGamePiece.BLACK, "chessImages/BlackRook.gif");
-		icons_map.put(ChessGamePiece.WHITE, "chessImages/WhiteRook.gif");
+		icons_map.put(-1, "../chessImages/default-Unassigned.gif");
+		icons_map.put(ChessGamePiece.BLACK, "../chessImages/BlackRook.gif");
+		icons_map.put(ChessGamePiece.WHITE, "../chessImages/WhiteRook.gif");
 	
-		try {
-			return new ImageIcon(getClass().getResource(this.icons_map.get(getColorOfPiece())));
+
+		return new ImageIcon(getClass().getResource(this.icons_map.get(getColorOfPiece())));
 					
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			return null;
-		}
+
 	
 	
 	

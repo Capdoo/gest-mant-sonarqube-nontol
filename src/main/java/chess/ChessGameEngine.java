@@ -1,4 +1,4 @@
-package chess.game;
+package chess;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.Color;
