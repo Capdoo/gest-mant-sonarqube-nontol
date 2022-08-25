@@ -81,13 +81,13 @@ public class King
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
             return new ImageIcon(
-                getClass().getResource("../chessImages/BlackKing.gif" )
+                getClass().getResource("../chessImages/BlackKing.gif")
             );            
         }
         else
         {
             return new ImageIcon(
-                getClass().getResource("../chessImages/default-Unassigned.gif" )
+                getClass().getResource("../chessImages/default-Unassigned.gif")
             );            
         }
     }
