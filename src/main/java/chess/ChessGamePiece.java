@@ -2,6 +2,7 @@ package chess;
 import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 // -------------------------------------------------------------------------
 /**
@@ -57,7 +58,7 @@ public abstract class ChessGamePiece implements Serializable{
      * @param pieceColor
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public ChessGamePiece(
+    protected ChessGamePiece(
         ChessGameBoard board,
         int row,
         int col,
@@ -89,7 +90,7 @@ public abstract class ChessGamePiece implements Serializable{
      * @param pieceColor
      *            either GamePiece.BLACK, WHITE, or UNASSIGNED
      */
-    public ChessGamePiece(
+    protected ChessGamePiece(
         ChessGameBoard board,
         int row,
         int col,
@@ -133,7 +134,7 @@ public abstract class ChessGamePiece implements Serializable{
     protected ArrayList<String> calculateSouthMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceRow + 1; i < 8 && count < numMoves; i++ ){
@@ -144,10 +145,6 @@ public abstract class ChessGamePiece implements Serializable{
                     if ( isEnemy( board, i, pieceColumn ) ){
                         break;
                     }
-                }
-                else
-                {
-                    break;
                 }
             }
         }
@@ -167,7 +164,7 @@ public abstract class ChessGamePiece implements Serializable{
     protected ArrayList<String> calculateNorthMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceRow - 1; i >= 0 && count < numMoves; i-- ){
@@ -179,10 +176,7 @@ public abstract class ChessGamePiece implements Serializable{
                         break;
                     }
                 }
-                else
-                {
-                    break;
-                }
+
             }
         }
         return moves;
@@ -201,7 +195,7 @@ public abstract class ChessGamePiece implements Serializable{
     protected ArrayList<String> calculateEastMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceColumn + 1; i < 8 && count < numMoves; i++ ){
@@ -212,10 +206,6 @@ public abstract class ChessGamePiece implements Serializable{
                     if ( isEnemy( board, pieceRow, i ) ){
                         break;
                     }
-                }
-                else
-                {
-                    break;
                 }
             }
         }
@@ -235,7 +225,7 @@ public abstract class ChessGamePiece implements Serializable{
     protected ArrayList<String> calculateWestMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceColumn - 1; i >= 0 && count < numMoves; i-- ){
@@ -246,10 +236,6 @@ public abstract class ChessGamePiece implements Serializable{
                     if ( isEnemy( board, pieceRow, i ) ){
                         break;
                     }
-                }
-                else
-                {
-                    break;
                 }
             }
         }
@@ -269,7 +255,7 @@ public abstract class ChessGamePiece implements Serializable{
     protected ArrayList<String> calculateNorthWestMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = 1; i < 8 && count < numMoves; i++ ){
@@ -281,11 +267,6 @@ public abstract class ChessGamePiece implements Serializable{
                 }
                 else if ( isEnemy( board, pieceRow - i, pieceColumn - i ) ){
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn - i ) );
-                    count++;
-                    break;
-                }
-                else
-                {
                     break;
                 }
             }
@@ -306,7 +287,7 @@ public abstract class ChessGamePiece implements Serializable{
     protected ArrayList<String> calculateNorthEastMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = 1; i < 8 && count < numMoves; i++ ){
@@ -318,11 +299,6 @@ public abstract class ChessGamePiece implements Serializable{
                 }
                 else if ( isEnemy( board, pieceRow - i, pieceColumn + i ) ){
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn + i ) );
-                    count++;
-                    break;
-                }
-                else
-                {
                     break;
                 }
             }
@@ -343,7 +319,7 @@ public abstract class ChessGamePiece implements Serializable{
     protected ArrayList<String> calculateSouthWestMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = 1; i < 8 && count < numMoves; i++ ){
@@ -355,11 +331,6 @@ public abstract class ChessGamePiece implements Serializable{
                 }
                 else if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                    count++;
-                    break;
-                }
-                else
-                {
                     break;
                 }
             }
@@ -380,7 +351,7 @@ public abstract class ChessGamePiece implements Serializable{
     protected ArrayList<String> calculateSouthEastMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = 1; i < 8 && count < numMoves; i++ ){
@@ -392,11 +363,6 @@ public abstract class ChessGamePiece implements Serializable{
                 }
                 else if ( isEnemy( board, pieceRow + i, pieceColumn + i ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
-                    count++;
-                    break;
-                }
-                else
-                {
                     break;
                 }
             }
@@ -439,13 +405,7 @@ public abstract class ChessGamePiece implements Serializable{
      * @return boolean true if the location is valid, false if not
      */
     public boolean isOnScreen( int row, int col ){
-        if ( row >= 0 && row <= 7 && col >= 0 && col <= 7 ){
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+			return row >= 0 && row <= 7 && col >= 0 && col <= 7;
     }
     // ----------------------------------------------------------
     /**
@@ -678,23 +638,11 @@ public abstract class ChessGamePiece implements Serializable{
             return false;
         }
         if ( this.getColorOfPiece() == ChessGamePiece.WHITE ){
-            if ( enemyPiece.getColorOfPiece() == ChessGamePiece.BLACK ){
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+						return enemyPiece.getColorOfPiece() == ChessGamePiece.BLACK;
         }
         else
         {
-            if ( enemyPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+						return enemyPiece.getColorOfPiece() == ChessGamePiece.WHITE;
         }
     }
     // ----------------------------------------------------------
@@ -704,8 +652,8 @@ public abstract class ChessGamePiece implements Serializable{
      * @param board the game board to check on
      * @return ArrayList<GamePiece> the list of attackers
      */
-    public ArrayList<ChessGamePiece> getCurrentAttackers( ChessGameBoard board ){
-        ArrayList<ChessGamePiece> attackers = new ArrayList<ChessGamePiece>();
+    public List<ChessGamePiece> getCurrentAttackers( ChessGameBoard board ){
+        List<ChessGamePiece> attackers = new ArrayList<>();
         int enemyColor =
             ( this.getColorOfPiece() == ChessGamePiece.BLACK )
                 ? ChessGamePiece.WHITE

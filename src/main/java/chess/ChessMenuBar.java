@@ -70,8 +70,9 @@ public class ChessMenuBar
                 toggleGraveyardHandler();
             }
         }
-    }
-    // ----------------------------------------------------------
+				
+				
+				    // ----------------------------------------------------------
     /**
      * Takes an appropriate action if the about button is clicked.
      */
@@ -94,19 +95,7 @@ public class ChessMenuBar
      */
     private void exitHandler(){
         JOptionPane.showMessageDialog( this.getParent(), "Thanks for leaving"
-            + ", quitter! >:(" );
-        
-        Component possibleFrame = this;
-        
-
-    	while ( !( possibleFrame instanceof JFrame ) ){
-            possibleFrame = possibleFrame.getParent();
-        }
-        JFrame frame = (JFrame)possibleFrame;
-        frame.setVisible( false );
-        frame.dispose();	
-
-        
+            + ", quitter! >:(" );        
     }
     /**
      * Takes an appropriate action if the toggle graveyard button is clicked.
@@ -125,4 +114,11 @@ public class ChessMenuBar
             !( (ChessPanel)this.getParent() ).getGameLog().isVisible() );
         ( (ChessPanel)this.getParent() ).revalidate();
     }
+
+		private Component getParent() {
+			throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+		}
+				
+    }
+
 }
